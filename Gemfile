@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'omniauth-facebook'
 gem 'omniauth'
+gem 'figaro'
 
 gem 'bcrypt', '~> 3.1.7'
 # Use Redis adapter to run Action Cable in production
