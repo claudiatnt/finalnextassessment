@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'braintree/new'
+  
+  post 'braintree/checkout'
 
 	resources :users
   resource :session, only: [:create, :destroy, :new]
