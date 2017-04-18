@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
+
 	resources :users
   resource :session, only: [:create, :destroy, :new]
 
