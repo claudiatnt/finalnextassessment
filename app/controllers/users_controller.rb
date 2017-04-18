@@ -3,6 +3,24 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def index
+    @filterrific = initialize_filterrific(
+    User,
+    params[:filterrific],
+    select_options: {
+        sorted_by: User.options_for_sorted_by
+      },
+    ) or return
+
+
+    @users = @filterrific.find
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
 	def create
 		user = User.new(user_params)
 		if user.save 
@@ -23,6 +41,6 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:last_name, :first_name, :email, :password, :username)
+		params.require(:user).permit(:last_name, :first_name, :email, :password)
 	end
 end
