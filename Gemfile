@@ -27,6 +27,14 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'filterrific'
+gem 'braintree'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+
+gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'figaro'
+gem 'faker'
 
 gem 'bcrypt', '~> 3.1.7'
 # Use Redis adapter to run Action Cable in production

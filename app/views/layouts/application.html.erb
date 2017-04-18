@@ -3,12 +3,22 @@
   <head>
     <title>InstagramClone</title>
     <%= csrf_meta_tags %>
+    
+    <!-- Load the Client component. -->
+    <script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>
+
+    <!-- Load the Hosted Fields component. -->
+    <script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  	<% if logged_in? %>
+      <%= link_to "Make Payment", braintree_new_path %>
+			<%= button_to ("Sign Out"), sign_out_path, method: :delete %>
+  	<% end %>
     <%= yield %>
   </body>
 </html>
