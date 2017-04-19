@@ -1,1 +1,13 @@
-<h2> <%= current_user.first_name + " " + current_user.last_name %> profile </h2>
+<% if @user == current_user %>
+	<h4> <%= link_to "Edit Profile", edit_user_path(@user) %> </h4>
+<% end %>
+
+<h2> <%= image_tag(@user.avatar.thumb.url) if @user.avatar? %> <%= @user.first_name + " " + @user.last_name %> profile </h2>
+
+<br>
+
+<% @user.posts.each do |x| %>
+	<p><%= link_to (image_tag(x.story.thumb.url)), user_post_path(@user, x.id) %></p>
+	<p><%= x.title %></p>
+<% end %>
+

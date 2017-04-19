@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417082357) do
+ActiveRecord::Schema.define(version: 20170419080303) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authentications", force: :cascade do |t|
     t.string   "uid"
@@ -19,7 +22,16 @@ ActiveRecord::Schema.define(version: 20170417082357) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_authentications_on_user_id"
+    t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "story"
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,6 +41,9 @@ ActiveRecord::Schema.define(version: 20170417082357) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "avatar"
   end
 
+  add_foreign_key "authentications", "users"
+  add_foreign_key "posts", "users"
 end

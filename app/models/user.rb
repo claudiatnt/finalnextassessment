@@ -1,12 +1,13 @@
 class User < ApplicationRecord
 	has_secure_password
   has_many :authentications, :dependent => :destroy
+  has_many :posts
 	validates :last_name, presence: true
 	validates :first_name, presence: true
 	validates :email, presence: true, uniqueness: true, format: { with: /.+@.+./, message: "Please input valid email" }
 	validates :password, length: {minimum: 5}
 
-
+  mount_uploader :avatar, AvatarUploader
 
 	def self.create_with_auth_and_hash(authentication, auth_hash) create! do |u|
       u.first_name = auth_hash["info"]["first_name"]
@@ -56,6 +57,10 @@ end
       ['Created at (desc)', 'created_at_desc'],
       ['Created at (asc)', 'created_at_asc'],
     ]
+  end
+
+  def name
+    last_name + " " + first_name
   end
 
   scope :search_query, -> (search) { where("LOWER(last_name) LIKE ? OR LOWER(first_name) LIKE ? ", "%#{search.downcase}%", "%#{search.downcase}%") }
