@@ -59,5 +59,9 @@ end
     ]
   end
 
+  def name
+    last_name + " " + first_name
+  end
+
   scope :search_query, -> (search) { where("LOWER(last_name) LIKE ? OR LOWER(first_name) LIKE ? ", "%#{search.downcase}%", "%#{search.downcase}%") }
 end

@@ -7,7 +7,7 @@
 <br>
 
 <% @user.posts.each do |x| %>
-	<p><%= image_tag(x.story.thumb.url) %></p>
+	<p><%= link_to (image_tag(x.story.thumb.url)), user_post_path(@user, x.id) %></p>
 	<p><%= x.title %></p>
 <% end %>
 
