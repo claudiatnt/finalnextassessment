@@ -35,10 +35,10 @@ class UsersController < ApplicationController
 
 	def create
 		user = User.new(user_params)
-		if user.save 
-			flash[:error] = "There is an error with creating your account!"
-		else
+		if user.save
 			flash[:success] = "Congratulations! You have successfully created an account!"
+		else
+			flash[:error] = "There is an error with creating your account!"
 		end
 		redirect_to root_path
 	end

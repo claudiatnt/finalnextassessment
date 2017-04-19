@@ -17,8 +17,13 @@
   <body>
   	<% if logged_in? %>
       <%= link_to "Make Payment", braintree_new_path %>
+      <%= link_to "Make a New Post", new_post_path %>
 			<%= button_to ("Sign Out"), sign_out_path, method: :delete %>
   	<% end %>
+
+    <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%=h value %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
