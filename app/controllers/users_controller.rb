@@ -4,10 +4,8 @@ class UsersController < ApplicationController
 	end
 
 	def index
-    @filterrific = initialize_filterrific(
-    User,
-    params[:filterrific],
-    select_options: {
+    @filterrific = initialize_filterrific(User, params[:filterrific],
+    	select_options: {
         sorted_by: User.options_for_sorted_by
       },
     ) or return
@@ -19,6 +17,10 @@ class UsersController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def edit
+
   end
 
 	def create
@@ -34,6 +36,10 @@ class UsersController < ApplicationController
 	def show
 		if !(logged_in?)
 			redirect_to new_user_path
+		elsif params[:id]
+			@user = User.find(params[:id])
+		else
+			@user = current_user
 		end
 	end
 
