@@ -20,7 +20,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+  	@user = User.find(current_user)
+  end
 
+  def update
+  	if current_user.update(user_params)
+  		flash[:message] = "Successfully updated your account!"
+  		redirect_to "/"
+  	else
+  		flash[:error] = current_user.errors.messages
+			redirect_to edit_user_path(current_user)
+  	end
   end
 
 	def create
@@ -47,6 +57,6 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:last_name, :first_name, :email, :password)
+		params.require(:user).permit(:last_name, :first_name, :email, :password, :avatar)
 	end
 end
