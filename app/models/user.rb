@@ -7,7 +7,7 @@ class User < ApplicationRecord
 	validates :email, presence: true, uniqueness: true, format: { with: /.+@.+./, message: "Please input valid email" }
 	validates :password, length: {minimum: 5}
 
-
+  mount_uploader :avatar, AvatarUploader
 
 	def self.create_with_auth_and_hash(authentication, auth_hash) create! do |u|
       u.first_name = auth_hash["info"]["first_name"]
