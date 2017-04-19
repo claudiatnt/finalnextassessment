@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   
   post 'braintree/checkout'
 
-	resources :users
+	resources :users do 
+		resources :posts, except: [:index]
+	end
+
+	resources :posts, only: [:index]
+
   resource :session, only: [:create, :destroy, :new]
 
   root 'users#show'
