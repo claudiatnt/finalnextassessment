@@ -20,7 +20,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
-gem 'capybara'
 
 ruby '2.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -42,6 +41,7 @@ gem 'figaro'
 gem 'faker'
 
 gem 'rails_12factor'
+gem 'factory_girl_rails'
 gem 'puma'
 
 gem 'bcrypt', '~> 3.1.7'
@@ -57,6 +57,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem "rspec-given"
+  gem 'capybara'
 end
 
 group :development do
