@@ -7,7 +7,6 @@ $(document).ready(function() {
   var form = document.querySelector('#cardForm');
   var submit = document.querySelector("#submit-payment-btn");
   var authorization = $('input[name="token"]').attr('value');
-  debugger
 
 
   braintree.client.create({
