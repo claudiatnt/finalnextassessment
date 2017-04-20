@@ -18,8 +18,12 @@ class BraintreeController < ApplicationController
 
 	  if result.success?
 	  	byebug
-	  	current_user.update(money + value)
-	    redirect_to :root, :flash => { :success => "Transaction successful! 5 dollars added!" }
+	  	if current_user.update(money: (current_user.money + value))
+	  		flash[:success] = "Transaction successful! 5 dollars added!"
+	  	else 
+	  		flash[:success] = "Transaction successful but unable to update your money!"
+	  	end
+	    redirect_to :root
 	  else
 	    redirect_to :root, :flash => { :error => "Transaction failed. Please try again." }
 	  end 
