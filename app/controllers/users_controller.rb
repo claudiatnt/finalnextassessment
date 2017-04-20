@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     ) or return
 
 
+
+
     @users = @filterrific.find
 
     respond_to do |format|
