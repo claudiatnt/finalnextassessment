@@ -17,7 +17,6 @@ class BraintreeController < ApplicationController
 	   )
 
 	  if result.success?
-	  	byebug
 	  	if current_user.update(money: (current_user.money + value))
 	  		flash[:success] = "Transaction successful! 5 dollars added!"
 	  	else 
