@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy, :new]
 
+  resources :comments, only: [:create, :destroy, :update]
+
   root 'users#show'
 
   get '/auth/:provider/callback', to: 'sessions#create_from_omniauth'
