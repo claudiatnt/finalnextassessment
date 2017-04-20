@@ -1,19 +1,51 @@
-<h2><%= @post.user.name %></h2>
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-4">
+		<h2><%= @post.user.name %></h2>
+	</div>
+</div>
 
-<p><%= image_tag(@post.story.url) %></p>
-<p><%= @post.title %></p>
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4 text-center">
+		<p><%= image_tag(@post.story.url) %></p>
+		<h3><%= @post.title %></h3>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-3">
+		<h3> Comments </h3>
+	</div>
+</div>
 
 <br>
 
 <% @post.comments.each do |x| %>
-	<%= x.content %>
-	<%= x.user.name %>
+	<div class="row">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-4 comments-box">
+			<p><%= x.content %></p>
+			<p><%= x.user.name %></p>
+		</div>
+	</div>
 <% end %>
 
-
-<%= form_for @comment do |form| %>
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-4">
+	<%= form_for @comment do |form| %>
   <%= render partial: '/comments/form', object: form %>
   
   <%= form.submit %>
-
+	</div>
 <% end %>
+</div>

@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 
 	def create
 		post = current_user.posts.new(post_params)
-		byebug
 		if post.save
 			flash[:success] = "You have successfully created a post!"
 			redirect_to root_path
