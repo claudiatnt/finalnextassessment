@@ -1,4 +1,19 @@
 <h2><%= @post.user.name %></h2>
 
-<p><%= image_tag(@post.story.thumb.url) %></p>
+<p><%= image_tag(@post.story.url) %></p>
 <p><%= @post.title %></p>
+
+<br>
+
+<% @post.comments.each do |x| %>
+	<%= x.content %>
+	<%= x.user.name %>
+<% end %>
+
+
+<%= form_for @comment do |form| %>
+  <%= render partial: '/comments/form', object: form %>
+  
+  <%= form.submit %>
+
+<% end %>
