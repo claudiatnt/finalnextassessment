@@ -8,7 +8,13 @@ $(document).ready(function() {
   var submit = document.querySelector("#submit-payment-btn");
   var authorization = $('input[name="token"]').attr('value');
 
-
+  //first off, the brain tree new controller generates a client token
+  //the token is then embedded (hidden field tag) into the braintree form so that you can
+  //pass it to the javascript to get braintree running. After braintree is running, send
+  //the customers payment details to Braintree in exchange for a payment method nonce
+  //a onetime value that represents that payment method (tokenize method). After submitting the form(at the end)
+  //of javascript, it goes to controller and and uses the nonce together with Braintree SDK
+  //to basically charge the card
   braintree.client.create({
     // Replace this with your own authorization.
     authorization: authorization

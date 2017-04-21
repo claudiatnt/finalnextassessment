@@ -1,5 +1,5 @@
 class BraintreeController < ApplicationController
-	 def new
+	def new
   	@client_token = Braintree::ClientToken.generate
 	end
 
