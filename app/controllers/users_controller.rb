@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	end
 
 	def index
+		byebug
     @filterrific = initialize_filterrific(User, params[:filterrific],
     	select_options: {
         sorted_by: User.options_for_sorted_by
