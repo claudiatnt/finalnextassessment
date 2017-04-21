@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 		else
 			flash[:error] = "There is an error with creating your account!"
 		end
-		redirect_to root_path
+		redirect_to new_session_path
 	end
 
 	def show
